@@ -1,7 +1,8 @@
 def main():
     print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
     display_main_menu()
-    num_list = get_user_input()
+    input_num = get_user_input()
+    num_list = str_to_numlist(input_num)
     avg = calc_average_temperature(num_list)
     print("The mean value of all temperature readings is : ", avg)
     calc_min_max_temperature(num_list)
@@ -13,16 +14,17 @@ def main():
 def display_main_menu():
     print("Enter some temperature readings seperated by commas (e.g. 5, 67, 32)");
 
-
 def get_user_input():
     usr_str=input()
-    str_list=usr_str.split(",")
-    float_list=[]
+    return usr_str
+
+def str_to_numlist(usr_str):
+    str_list = usr_str.split(",")
+    float_list = []
     for usr_str in str_list:
         float_list.append(float(usr_str))
     print(float_list)
     return float_list
-
 
 def calc_average_temperature(float_list):
     average=sum(float_list)/len(float_list)
@@ -52,6 +54,6 @@ def calc_median_temperature(float_list):
 
     print("The median temperature is : " + str(median))
 
-
 if __name__ == "__main__":
     main()
+
